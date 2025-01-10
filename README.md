@@ -1,5 +1,3 @@
-# Custom 16 Bit Computer   
-
 # About  
 The [name in progress] is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in logisim evolution, but could theoretically be build in real life if anyone has the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person, but please not that information here may have typos and other mistakes, in which case please report them, so don't rule any one point of error if you are having problems (at least for the time being). Enjoy!  
 
