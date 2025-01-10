@@ -1,17 +1,17 @@
-# About  
+## About  
 The [name in progress] is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in logisim evolution, but could theoretically be built in real life if anyone has the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person to use, but please note that information here may have typos and other mistakes, in which case please report them, so don't rule any one point of error if you are having problems (at least for the time being). Enjoy!  
 
-# Usage Instructions  
+## Usage Instructions  
 PLEASE read the text below to understand how this computer works, it should help you a lot (if i did a good job writing it). To program the computer, first write out what you would like to do in the assembly code listed below. Then, compile (you will need to do this yourself, sorry) the assembly into binary, which is stored in rom as a hex value. So, write code, turn it into binary, turn that into hex, record it into rom, hopefully it doesn't break. Listed below are a few examples of what lines of this custom assembly would look like, and below that the binary conversion charts for each instruction listed next to the name.   
    
-Architure Style:   
+### Architure Style:   
 4x16 bit input   
 Input 1: 16 bit opticode - What to do with values 2 & 3   
 Input 2:  16 bit argument 1 - Value 1   
 Input 3:  16 bit argument 2 - Value 2   
 Input 4:  16 bit argument 3 - Save location  
 
-Components:
+### Components:
 
 - Instruction Interpreter: reads argument one and determines which instruction to execute
 - Registers: hold temporary values that the cpu needs in the very short term
@@ -20,7 +20,7 @@ Components:
 - ROM: stored instructions for the cpu to carry out once turned on, stores data as binary hex values, reads from address specified by counter
 - Counter: increases by one each tick unless modified by an instruction, controls read address of ROM
 
-Instructions:  
+### Instructions:  
   
 - IMM [0000000000000000] : immediately store the value typed out in argument 1 or 2 to the address specified in argument 3    
 - CPY [0000000000000001] : copy from address specified in argument 1 or 2 (the argument you chose to not copy from should have NULL as its value) to that specified in argument in 3  
@@ -44,7 +44,7 @@ Instructions:
 - RET [0000000000010001] : pop the top value off the stack and set the counter equal to that value, all other arguments are NULL for this instruction     
 - HLT [1111111111111111] : stop the system clock, all other arguments are NULL for this instruction   
 
-Example Instruction Commands:  
+### Example Instruction Commands:  
   
 - imm 437 NULL reg4  
 - cpy reg3 NULL reg2  
@@ -68,7 +68,7 @@ Example Instruction Commands:
 - ret NULL NULL NULL   
 - hlt NULL NULL NULL   
 
-Register Addresses:   
+### Register Addresses:   
 
 - reg0 [0000000000000000]     
 - reg1 [0000000000000001]       
