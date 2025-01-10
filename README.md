@@ -19,7 +19,7 @@ Components:
 
 Instructions:  
   
-IMM [0000000000000000] : immediately store the value typed out in argument 1 or 2 to the address specified in argument 3
+IMM [0000000000000000] : immediately store the value typed out in argument 1 or 2 to the address specified in argument 3    
 CPY [0000000000000001] : copy from address specified in argument 1 or 2 (the argument you chose to not copy from should have NULL as its value) to that specified in argument in 3  
 ADD [0000000000000010] : add the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 SUB [0000000000000011] : subtract the value held at the address specified in argument 1 from that at argument 2 and save it to the address specified in argument 3   
@@ -37,19 +37,20 @@ EQL [0000000000001110] : compare the values stored the at the addresses specifie
 NEQ [0000000000001111] : compare the values stored the at the addresses specified by arguments 1 and 2, if they are not equal, sets the counter value to the one typed out in argument 3    
 GRT [0000000000010000] : compare the values stored the at the addresses specified by arguments 1 and 2, if the value of argument 1 is greater than that of argument 2, sets the counter value to the one typed out in argument 3    
 LES [0000000000010001] : compare the values stored the at the addresses specified by arguments 1 and 2, if the value of argument 1 is less than that of argument 2, sets the counter value to the one typed out in argument 3    
-CAL [0000000000010001] : push the current counter value to the stack and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction
-RET [0000000000010001] : pop the top value off the stack and set the counter equal to that value
-HLT [1111111111111111] : stop the system clock   
+CAL [0000000000010001] : push the current counter value to the stack and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction     
+RET [0000000000010001] : pop the top value off the stack and set the counter equal to that value    
+HLT [1111111111111111] : stop the system clock      
 
-Register Addresses:
+Register Addresses:   
 
-reg0 [0000000000000000] 
-reg1 [0000000000000001] 
-reg2 [0000000000000010] 
-reg3 [0000000000000011] 
-reg4 [0000000000000100] 
-reg5 [0000000000000101] 
-reg6 [0000000000000110] 
-reg7 [0000000000000111] 
-reg8 [0000000000001000] 
-reg9 [0000000000001001] 
+reg0 [0000000000000000]     
+reg1 [0000000000000001]       
+reg2 [0000000000000010]    
+reg3 [0000000000000011]       
+reg4 [0000000000000100]    
+reg5 [0000000000000101]    
+reg6 [0000000000000110]    
+reg7 [0000000000000111]    
+reg8 [0000000000001000]      
+reg9 [0000000000001001]    
+    
