@@ -1,6 +1,5 @@
 # Custom 16 Bit Cpu   
 ALL INFORMAION IN HERE IS MOST LIKELY CORRECT, BUT PLEASE LET ME KNOW IF THERE ARE INCONSISTENCIES THAT I MISSED   
-Schematic Made in Logisim Evolution  
    
 Architure Style:   
 4x16 bit input   
@@ -54,4 +53,5 @@ Register Addresses:
 - reg7 [0000000000000111]    
 - reg8 [0000000000001000]      
 - reg9 [0000000000001001]    
-    
+
+Schematic Made in Logisim Evolution      
