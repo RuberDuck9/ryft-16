@@ -82,4 +82,7 @@ Input 4:  16 bit argument 3 - Save location
 - reg7 [0000000000000111]    
 - reg8 [0000000000001000]      
 - reg9 [0000000000001001]
-- null [1111111111111111]   
+- null [1111111111111111]
+
+## TODO 
+Write a compiler to turn the assembly into hex.
