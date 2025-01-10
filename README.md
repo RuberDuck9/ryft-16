@@ -1,8 +1,8 @@
 # About  
-The [name in progress] is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in logisim evolution, but could theoretically be build in real life if anyone has the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person, but please not that information here may have typos and other mistakes, in which case please report them, so don't rule any one point of error if you are having problems (at least for the time being). Enjoy!  
+The [name in progress] is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in logisim evolution, but could theoretically be built in real life if anyone has the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person to use, but please note that information here may have typos and other mistakes, in which case please report them, so don't rule any one point of error if you are having problems (at least for the time being). Enjoy!  
 
 # Usage Instructions  
-PLEASE read the text below to understand how this computer works, it should help you a lot (if i did a good job writing it). To program the computer, first write out what you would like to do in the assembly code listed below. Then, compile (you will need to do this yourself, sorry) the assembly into binary, which is stored in rom as a hex value. So, write code, turn it into binary, to that into hex, record it into rom, hopefully it doesn't break. Listed below are a few examples of what lines of this custom assembly would look like, and below that the binary conversion charts for each instruction listed next to the name.   
+PLEASE read the text below to understand how this computer works, it should help you a lot (if i did a good job writing it). To program the computer, first write out what you would like to do in the assembly code listed below. Then, compile (you will need to do this yourself, sorry) the assembly into binary, which is stored in rom as a hex value. So, write code, turn it into binary, turn that into hex, record it into rom, hopefully it doesn't break. Listed below are a few examples of what lines of this custom assembly would look like, and below that the binary conversion charts for each instruction listed next to the name.   
    
 Architure Style:   
 4x16 bit input   
@@ -17,8 +17,8 @@ Components:
 - Registers: hold temporary values that the cpu needs in the very short term
 - RAM: holds more long term data for the cpu
 - The Stack: stores data sequentially for the cpu, cannot be accessed out of outer
-- ROM: stored the instruction for the cpu to carry out once turned on, stored data as binary hex values, reads from address specified by counter
-- Counter: increases by one each tick unless modified by instruction, controls read address of ROM
+- ROM: stored instructions for the cpu to carry out once turned on, stores data as binary hex values, reads from address specified by counter
+- Counter: increases by one each tick unless modified by an instruction, controls read address of ROM
 
 Instructions:  
   
