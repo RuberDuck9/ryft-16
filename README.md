@@ -1,8 +1,8 @@
 ## About  
-The [name in progress] is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in logisim evolution, but could theoretically be built in real life if anyone has the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person to use, but please note that information here may have typos and other mistakes, in which case please report them, so don't rule any one point of error if you are having problems (at least for the time being). Enjoy!  
+The [name in progress] is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in logisim evolution, but could theoretically be built in real life if anyone has the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person to use, but please note that information here may have typos and other mistakes, in which case please report them, so don't rule out any one point of error if you are having problems (at least for the time being). Enjoy!  
 
 ## Usage Instructions  
-PLEASE read the text below to understand how this computer works, it should help you a lot (if i did a good job writing it). To program the computer, first write out what you would like to do in the assembly code listed below. Then, compile (you will need to do this yourself, sorry) the assembly into binary, which is stored in rom as a hex value. So, write code, turn it into binary, turn that into hex, record it into rom, hopefully it doesn't break. Listed below are a few examples of what lines of this custom assembly would look like, and below that the binary conversion charts for each instruction listed next to the name.   
+*PLEASE* read the text below to understand how this computer works, it should help you a lot (if i did a good job writing it). To program the computer, first write out what you would like to do in the assembly code listed below. Then, compile (you will need to do this yourself, sorry) the assembly into binary, which is stored in rom as a hex value. So, write code, turn it into binary, turn that into hex, record it into rom, hopefully it doesn't break. Listed below are a few examples of what lines of this custom assembly would look like, and the binary conversion charts for each instruction listed next to the name.   
    
 ### Architure Style:   
 4x16 bit input   
@@ -22,9 +22,11 @@ Input 4:  16 bit argument 3 - Save location
 
 ### Instructions:  
   
-- IMM [0000000000000000] : immediately store the value typed out in argument 1 or 2 to the address specified in argument 3    
+- IMM [0000000000000000] : immediately store the value typed out in argument 1 or 2 to the address specified in argument 3, the argument you chose to not copy from should have NULL as its value    
 - CPY [0000000000000001] : copy from address specified in argument 1 or 2 (the argument you chose to not copy from should have NULL as its value) to that specified in argument in 3  
-- ADD [0000000000000010] : add the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
+- ADD [0000000000000010] : add the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3       
+- AD1 [0000000000100010] : add the value typed out in argument 1 and the value held at the address specified in arguments 2, and and save it to the address specified in argument 3   
+- AD2 [0000000000100011] : add the value typed out in argument 2 and the value held at the address specified in arguments 1, and and save it to the address specified in argument 3    
 - SUB [0000000000000011] : subtract the value held at the address specified in argument 1 from that at argument 2 and save it to the address specified in argument 3   
 - MLT [0000000000000100] : multiply the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - DIV [0000000000000101] : divide the value held at the address specified in argument 1 by that at argument 2 and save it to the address specified in argument 3  
@@ -44,7 +46,7 @@ Input 4:  16 bit argument 3 - Save location
 - RET [0000000000010001] : pop the top value off the stack and set the counter equal to that value, all other arguments are NULL for this instruction     
 - HLT [1111111111111111] : stop the system clock, all other arguments are NULL for this instruction   
 
-### Example Instruction Commands:  
+### Example Assembly Commands:  
   
 - imm 437 NULL reg4  
 - cpy reg3 NULL reg2  
