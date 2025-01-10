@@ -22,7 +22,7 @@ Input 4:  16 bit argument 3 - Save location
 
 ### Instructions:  
   
-- IMM [0000000000000000] : immediately store the value typed out in argument 1 or 2 to the address specified in argument 3, the argument you chose to not copy from should have NULL as its value    
+- IMM [0000000000000000] : immediately store the value typed out in argument 1 to the address specified in argument 3, argument 2 should have NULL as its value    
 - CPY [0000000000000001] : copy from address specified in argument 1 or 2 (the argument you chose to not copy from should have NULL as its value) to that specified in argument in 3  
 - ADD [0000000000000010] : add the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3       
 - AD1 [0000000000100010] : add the value typed out in argument 1 and the value held at the address specified in arguments 2, and and save it to the address specified in argument 3   
