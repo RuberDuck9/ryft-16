@@ -1,14 +1,14 @@
-# Custom 16 Bit Cpu   
+## Custom 16 Bit Cpu   
 ALL INFORMAION IN HERE IS MOST LIKELY CORRECT, BUT PLEASE LET ME KNOW IF THERE ARE INCONSISTENCIES THAT I MISSED   
    
-Architure Style:   
+#Architure Style:   
 4x16 bit input   
 Input 1: 16 bit opticode - What to do with values 2 & 3   
 Input 2:  16 bit argument 1 - Value 1   
 Input 3:  16 bit argument 2 - Value 2   
 Input 4:  16 bit argument 3 - Save location  
 
-Components:
+#Components:
 
 - Instruction Interpreter: reads argument one and determines which instruction to execute
 - Registers: hold temporary values that the cpu needs in the very short term
@@ -17,7 +17,7 @@ Components:
 - ROM: stored the instruction for the cpu to carry out once turned on, stored data as binary hex values, reads from address specified by counter
 - Counter: increases by one each tick unless modified by instruction, controls read address of ROM
 
-Instructions:  
+#Instructions:  
   
 - IMM [0000000000000000] : immediately store the value typed out in argument 1 or 2 to the address specified in argument 3    
 - CPY [0000000000000001] : copy from address specified in argument 1 or 2 (the argument you chose to not copy from should have NULL as its value) to that specified in argument in 3  
@@ -41,7 +41,7 @@ Instructions:
 - RET [0000000000010001] : pop the top value off the stack and set the counter equal to that value    
 - HLT [1111111111111111] : stop the system clock      
 
-Register Addresses:   
+#Register Addresses:   
 
 - reg0 [0000000000000000]     
 - reg1 [0000000000000001]       
@@ -52,6 +52,4 @@ Register Addresses:
 - reg6 [0000000000000110]    
 - reg7 [0000000000000111]    
 - reg8 [0000000000001000]      
-- reg9 [0000000000001001]    
-
-Schematic Made in Logisim Evolution      
+- reg9 [0000000000001001]       
