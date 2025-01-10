@@ -42,33 +42,33 @@ Input 4:  16 bit argument 3 - Save location
 - NEQ [0000000000001111] : compare the values stored the at the addresses specified by arguments 1 and 2, if they are not equal, sets the counter value to the one typed out in argument 3    
 - GRT [0000000000010000] : compare the values stored the at the addresses specified by arguments 1 and 2, if the value of argument 1 is greater than that of argument 2, sets the counter value to the one typed out in argument 3    
 - LES [0000000000010001] : compare the values stored the at the addresses specified by arguments 1 and 2, if the value of argument 1 is less than that of argument 2, sets the counter value to the one typed out in argument 3    
-- CAL [0000000000010001] : push the current counter value to the stack and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction     
+- CAL [0000000000010001] : push the current counter value + 1 to the stack (to prevent infinite loops) and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction     
 - RET [0000000000010001] : pop the top value off the stack and set the counter equal to that value, all other arguments are NULL for this instruction     
 - HLT [1111111111111111] : stop the system clock, all other arguments are NULL for this instruction   
 
 ### Example Assembly Commands:  
   
-- imm 437 NULL reg4  
-- cpy reg3 NULL reg2  
-- add reg0 reg1 reg2      
-- sub reg0 reg1 reg2     
-- mlt reg0 reg1 reg2    
-- div reg0 reg1 reg2   
-- and reg0 reg1 reg2   
-- orr reg0 reg1 reg2   
-- nor reg0 reg1 reg2   
-- str reg2 NULL 5   
-- psh reg3 NULL NULL   
-- pop NULL NULL reg5   
-- rst NULL NULL NULL   
-- gto NULL NULL 27   
-- eql reg0 reg1 4   
-- neq reg0 reg1 4   
-- grt reg0 reg1 4   
-- les reg0 reg1 4   
-- cal NULL NULL 7  
-- ret NULL NULL NULL   
-- hlt NULL NULL NULL   
+- imm 437 NULL reg4 -> save 437 in reg4   
+- cpy reg3 NULL reg2 -> copy the value in reg3 and save it in reg2   
+- add reg0 reg1 reg2 -> add the values in reg0 and reg1 and save it in reg2      
+- sub reg0 reg1 reg2 -> subtract the value in reg1 from reg0 ad save it in reg2       
+- mlt reg0 reg1 reg2 -> multiply the value in reg0 and reg1 and save the product in reg2    
+- div reg0 reg1 reg2 -> divide the value in reg0 by the value in reg1 and save the quotient in reg2     
+- and reg0 reg1 reg2 -> and each bit of reg0 and reg1 together, save the result in reg2             
+- orr reg0 reg1 reg2 -> or each bit of reg0 and reg1 together, save the result in reg2      
+- nor reg0 reg1 reg2 -> nor each bit of reg0 and reg1 together, save the result in reg2      
+- str reg2 NULL 5 -> store the value in reg2 to address 5 in ram      
+- psh reg3 NULL NULL -> push the value in reg3 to the stack       
+- pop NULL NULL reg5 -> pop the top value off the stack and save it in reg5      
+- rst NULL NULL NULL -> set the counter value to 0     
+- gto NULL NULL 27 -> set the counter value to 27   
+- eql reg0 reg1 4 -> if the values in reg0 and reg1 are the same, set the counter value to 4    
+- neq reg0 reg1 4 -> if the values in reg0 and reg1 are not the same, set the counter value to 4     
+- grt reg0 reg1 4 -> if the value in reg0 is greater than the value in reg1, set the counter value to 4      
+- les reg0 reg1 4 -> if the value in reg0 is less than the value in reg1, set the counter value to 4      
+- cal NULL NULL 7 -> save the current counter value to the stack and set the counter value to 8 (7+1)   
+- ret NULL NULL NULL -> pop the top value off the stack and set the counter equal to whatever it is    
+- hlt NULL NULL NULL -> stop the system clock     
 
 ### Register Addresses:   
 
