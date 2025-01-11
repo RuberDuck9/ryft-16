@@ -23,7 +23,7 @@ Input 4:  16 bit argument 3 - Save location
 ### Instructions:  
   
 - IMM [0000000000000000] : immediately store the value typed out in argument 1 to the address specified in argument 3, argument 2 should have NULL as its value    
-- CPY [0000000000000001] : copy from address specified in argument 1 or 2 (the argument you chose to not copy from should have NULL as its value) to that specified in argument in 3  
+- CPY [0000000000000001] : copy from the address specified in argument 1, argument 2 should be NULL, to that specified in argument in 3  
 - ADD [0000000000000010] : add the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3       
 - AD1 [0000000000100010] : add the value typed out in argument 1 and the value held at the address specified in arguments 2, and and save it to the address specified in argument 3   
 - AD2 [0000000000100011] : add the value typed out in argument 2 and the value held at the address specified in arguments 1, and and save it to the address specified in argument 3    
@@ -33,8 +33,8 @@ Input 4:  16 bit argument 3 - Save location
 - AND [0000000000000110] : and each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - ORR [0000000000000111] : or each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - NOR [0000000000001000] : nor each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
-- STR [0000000000001001] : store the value held at the address specified in arguments 1 or 2 (the argument you chose to not copy from should have NULL as its value) at the address typed in argument 3 in ram
-- PSH [0000000000001010] : push the value stored at the address in either argument 1 or 2 to the stack, the argument not used should be NULL and argument 3 should be NULL   
+- STR [0000000000001001] : store the value held at the address specified in arguments 1, argument 2 should be NULL, at the address typed in argument 3 in ram
+- PSH [0000000000001010] : push the value stored at the address in either argument 1 to the stack, argument 2 should be NULL and argument 3 should be NULL   
 - POP [0000000000001011] : pop the top value from the stack and save it to the address specified in argument 3, arguments 1 and 2 should be NULL   
 - RST [0000000000001100] : set the value of counter to zero, all other arguments are NULL for this instruction         
 - GTO [0000000000001101] : set the value of counter to the value typed in argument 3, argument 1 and 2 should be NULL   
