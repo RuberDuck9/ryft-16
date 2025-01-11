@@ -72,7 +72,7 @@ Input 4:  16 bit argument 3 - Save location
 
 ### Register Addresses:   
 
-- null [0000000000000000]     
+- reg0 [0000000000000000]     
 - reg1 [0000000000000001]       
 - reg2 [0000000000000010]    
 - reg3 [0000000000000011]       
@@ -93,6 +93,7 @@ Input 4:  16 bit argument 3 - Save location
 - reg18 [0000000000010010]
 - reg19 [0000000000010011]
 - reg20 [0000000000010100]
+- null [1111111111111111]
 
 ## TODO 
 Write a compiler to turn the assembly into hex.
