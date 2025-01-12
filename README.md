@@ -48,6 +48,7 @@ Input 4:  16 bit argument 3 - Save location
 - HLT [1111111111111111] [ffff] : stop the system clock, all other arguments are NULL for this instruction   
 
 ### Example Assembly Commands:  
+Subject to change in the future
   
 - imm 437 NULL reg4 -> save 437 in reg4   
 - cpy reg3 NULL reg2 -> copy the value in reg3 and save it in reg2   
