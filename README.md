@@ -77,4 +77,4 @@ Subject to change in the future
 - null [1111111111111111] [ffff]
 
 ## TODO 
-Write a compiler to turn the assembly into hex.
+Write an assembler to turn the assembly into hex.
