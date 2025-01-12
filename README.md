@@ -33,7 +33,7 @@ Input 4:  16 bit argument 3 - Save location
 - AND [0000000000001000] [0008] : and each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - ORR [0000000000001001] [0009] : or each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - NOR [0000000000001010] [000a] : nor each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
-- STR [0000000000001011] [000b] : store the value held at the address specified in arguments 1, argument 2 should be NULL, at the address typed in argument 3 in ram
+- STR [0000000000001011] [000b] : store the value held at the address specified in arguments 1 at the address typed in argument 3 in ram, argument 2 should be NULL
 - PSH [0000000000001100] [000c] : push the value stored at the address in either argument 1 to the stack, argument 2 should be NULL and argument 3 should be NULL   
 - POP [0000000000001101] [000d] : pop the top value from the stack and save it to the address specified in argument 3, arguments 1 and 2 should be NULL   
 - RST [0000000000001110] [000e] : set the value of counter to zero, all other arguments are NULL for this instruction         
