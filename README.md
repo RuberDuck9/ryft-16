@@ -33,11 +33,11 @@ Input 4:  16 bit argument 3 - Save location
 - AND [0000000000001000] [0008] : and each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - ORR [0000000000001001] [0009] : or each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - NOR [0000000000001010] [000a] : nor each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
-- STR [0000000000001011] [000b] : store the value held at the address specified in arguments 1 to the address typed in argument 2 in ram, argument 3 should be NULL
+- STR [0000000000001011] [000b] : store the value held at the address specified in arguments 1 to the address specified in arguments 2 in ram, argument 3 should be NULL
 - PSH [0000000000001100] [000c] : push the value stored at the address in either argument 1 to the stack, argument 2 should be NULL and argument 3 should be NULL   
 - POP [0000000000001101] [000d] : pop the top value from the stack and save it to the address specified in argument 3, arguments 1 and 2 should be NULL   
 - RST [0000000000001110] [000e] : set the value of counter to zero, all other arguments are NULL for this instruction         
-- GTO [0000000000001111] [000f] : set the value of counter to the value typed in argument 3, argument 1 and 2 should be NULL   
+- GTO [0000000000001111] [000f] : set the value of counter to the value typed in argument 1, argument 2 and 3 should be NULL   
 - EQL [0000000000010000] [0010] : compare the values stored the at the addresses specified by arguments 1 and 2, if they are equal, sets the counter value to the one typed out in argument 3   
 - NEQ [0000000000010001] [0011] : compare the values stored the at the addresses specified by arguments 1 and 2, if they are not equal, sets the counter value to the one typed out in argument 3    
 - GRT [0000000000010010] [0012] : compare the values stored the at the addresses specified by arguments 1 and 2, if the value of argument 1 is greater than that of argument 2, sets the counter value to the one typed out in argument 3    
