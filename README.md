@@ -7,9 +7,9 @@ The [name in progress] is a 16 bit cpu/computer that can do basic functions and 
 ### Architure Style:   
 4x16 bit input   
 Input 1: 16 bit opticode - What to do with the following 3 arguments   
-Input 2:  16 bit argument 1 - Value 1   
-Input 3:  16 bit argument 2 - Value 2   
-Input 4:  16 bit argument 3 - Save location  
+Input 2:  16 bit argument 1 - Argument 1   
+Input 3:  16 bit argument 2 - Argument 2   
+Input 4:  16 bit argument 3 - Argument 3  
 
 ### Components:
 
