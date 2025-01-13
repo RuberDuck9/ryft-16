@@ -7,9 +7,9 @@ The [name in progress] is a 16 bit cpu/computer that can do basic functions and 
 ### Architure Style:   
 4x16 bit input   
 Input 1: 16 bit opticode - What to do with the following 3 arguments   
-Input 2:  16 bit argument 1
-Input 3:  16 bit argument 2
-Input 4:  16 bit argument 3 
+Input 2:  16 bit argument 1     
+Input 3:  16 bit argument 2     
+Input 4:  16 bit argument 3     
 
 ### Components:
 
@@ -48,9 +48,9 @@ Input 4:  16 bit argument 3
 - HLT [1111111111111111] [ffff] : stop the system clock, all other arguments are NULL for this instruction   
 
 ### Example Assembly Commands:  
-Subject to change in the future
+Subject to change in the future    
 
-(Removed for now while command are reworked)
+(Removed for now while command are reworked)   
 
 ### Register Addresses:   
 
