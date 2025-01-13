@@ -2,14 +2,14 @@
 The [name in progress] is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in logisim evolution, but could theoretically be built in real life if anyone has the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person, but please note that information here may have typos and other mistakes (in which case please report them) so don't rule out any one point of error if you are having problems (at least for the time being). Enjoy!  
 
 ## Usage Instructions  
-*PLEASE* read the text below to understand how this computer works, it should help you a lot (if i did a good job writing it). To program the computer, first write out what you would like to do in the assembly code listed below. Then, convert (you will need to do this yourself, sorry) the assembly into binary, which is stored in rom as a hex value. So, write code, turn that into hex, record it into rom, hopefully it doesn't break. Listed below are a few examples of what lines of this custom assembly would look like, and the binary conversion charts for each instruction listed next to the name.   
+*PLEASE* read the text below to understand how this computer works, if even a single instruction is formated wrong the program will break. To program the computer, first write out what you would like to do in the assembly code listed below. Then, convert (you will need to do this yourself, sorry) the assembly into binary, which is stored in rom as a hex value. So, write code, turn that into hex, record it into rom, hopefully it doesn't break. Listed below are a few examples of what lines of this custom assembly would look like, and the binary conversion charts for each instruction listed next to the name.   
    
 ### Architure Style:   
 4x16 bit input   
 Input 1: 16 bit opticode - What to do with the following 3 arguments   
-Input 2:  16 bit argument 1 - Argument 1   
-Input 3:  16 bit argument 2 - Argument 2   
-Input 4:  16 bit argument 3 - Argument 3  
+Input 2:  16 bit argument 1
+Input 3:  16 bit argument 2
+Input 4:  16 bit argument 3 
 
 ### Components:
 
