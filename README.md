@@ -1,10 +1,16 @@
+![architure](https://github.com/user-attachments/assets/da8653cb-1d8c-460a-8a7b-f7826a341588)
+The architecture this cpu is closely modeled after.
+
 ## About  
 The [name in progress] is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in **logisim evolution**, but could theoretically be built in real life if anyone has the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person, but please note that information here may have typos and other mistakes (in which case please report them) so don't rule out any one point of error if you are having problems (at least for the time being). Enjoy!  
 
 ## Usage Instructions  
-*PLEASE* read the text below to understand how this computer works, if even a single instruction is formated wrong the program will break. To program the computer, first write out what you would like to do in the assembly code listed below. Then, convert (you will need to do this yourself, sorry) the assembly into binary, which is stored in rom as a hex value. So, write code, turn that into hex, record it into rom, hopefully it doesn't break. Listed below are a few examples of what lines of this custom assembly would look like, and the binary conversion charts for each instruction listed next to the name.   
+*PLEASE* read the text below to understand how this computer works, if even a single instruction is formatted wrong the program will break. To program the computer, first write out what you would like to do in the assembly code listed below. Then, convert (you will need to do this yourself, sorry) the assembly into binary, which is stored in rom as a hex value. So, write code, turn that into hex, record it into rom, hopefully it doesn't break. Listed below are a few examples of what lines of this custom assembly would look like, and the binary conversion charts for each instruction listed next to the name.   
+
+## Common Traps
+There are a few things that no matter the circumstance should pretty much never be done. The first is setting the counting to a non-multiple of 4. Doing so will cause the cpu to crash and burn miserably as arguments and opicodes will not be in sync. Rather than seeing "opticode arg1 arg2 arg3" the cpu may see "arg3 opticode arg1 arg2" which would be catastrophic. Another trap is pushing a value to stack and not popping it withing a function. This will cause the ret instruction to attempt to jump to the value you pushed to the stack and forgot about. For this reason, when inside functions it is best to try to use registers because if you forget to pop all your values off the stack things will fall apart quickly. I'm sure there are more things I'm forgetting about at the moment, so be careful when doing things not generally intended by this architecture. 
    
-### Architure Style:   
+### Architecture Style:   
 4x16 bit input   
 Input 1: 16 bit opticode - What to do with the following 3 arguments   
 Input 2:  16 bit argument 1     
@@ -25,8 +31,8 @@ Input 4:  16 bit argument 3
 - IMM [0000000000000000] [0000] : immediately store the value typed out in argument (IN HEX!) 1 to the address specified in argument 3, argument 2 should have NULL as its value    
 - CPY [0000000000000001] [0001] : copy from the address specified in argument 1, argument 2 should be NULL, to that specified in argument in 3  
 - ADD [0000000000000010] [0002] : add the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3       
-- AD1 [0000000000000011] [0003] : add the value typed out in argument 1 (IN HEX!) and the value held at the address specified in arguments 2, and and save it to the address specified in argument 3   
-- AD2 [0000000000000100] [0004] : add the value typed out in argument 2 (IN HEX!) and the value held at the address specified in arguments 1, and and save it to the address specified in argument 3    
+- AD1 [0000000000000011] [0003] : add the value typed out in argument 1 (IN HEX!) and the value held at the address specified in arguments 2, and save it to the address specified in argument 3   
+- AD2 [0000000000000100] [0004] : add the value typed out in argument 2 (IN HEX!) and the value held at the address specified in arguments 1, and save it to the address specified in argument 3    
 - SUB [0000000000000101] [0005] : subtract the value held at the address specified in argument 1 from that at argument 2 and save it to the address specified in argument 3   
 - MLT [0000000000000110] [0006] : multiply the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - DIV [0000000000000111] [0007] : divide the value held at the address specified in argument 1 by that at argument 2 and save it to the address specified in argument 3  
@@ -100,7 +106,7 @@ Subject to change in the future
 - null [1111111111111111] [ffff]   
 
 ## Debug Instructions:
-First, make sure you didn't make any typos. If you did not, then follow the code until you see an instruction make a mistake. Try to see what caused that mistake by checking to see if each argument is doing what it should be for that instruction (easier said than done). It should be apparent by now whether you are dealing with a hardware bug, or a sofware bug. If it is a hardware bug or a sofware bug caused by me telling you to do something incorrect in the manual, report it to me please. If it is just a pure sofware bug caused by bad code, don't bother reporting it.    
+First, make sure you didn't make any typos. If you did not, then follow the code until you see an instruction make a mistake. Try to see what caused that mistake by checking to see if each argument is doing what it should be for that instruction (easier said than done). It should be apparent by now whether you are dealing with a hardware bug, or a software bug. If it is a hardware bug or a software bug caused by me telling you to do something incorrect in the manual, report it to me please. If it is just a pure software bug caused by bad code, don't bother reporting it.    
 
 ## TODO 
 Write an assembler to turn the assembly into hex.    
