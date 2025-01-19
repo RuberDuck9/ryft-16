@@ -1,4 +1,5 @@
-![architure](https://github.com/user-attachments/assets/9a6eafec-f10c-439e-9d1e-eb008bccff76)    
+![1737254692_grim](https://github.com/user-attachments/assets/a459817b-d718-4ad2-854e-2d234ae0d7e5)    
+
 
 ## About  
 The [name in progress] is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in **logisim evolution**, but could theoretically be built in real life if anyone had the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person, but please note that information here may have typos and other mistakes (in which case please report them) so don't rule out any one point of error if you are having problems (at least for the time being). Enjoy!  
