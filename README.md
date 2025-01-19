@@ -43,7 +43,8 @@ Input 4:  16 bit argument 3
 - AND [0000000000001000] [0008] : and each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - ORR [0000000000001001] [0009] : or each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - NOR [0000000000001010] [000a] : nor each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
-- STR [0000000000001011] [000b] : store the value held at the address specified in arguments 1 to the address specified in arguments 2 in ram, argument 3 should be NULL 
+- STR [0000000000001011] [000b] : store the value held at the address specified in arguments 1 to the address specified in arguments 2 in ram, argument 3 should be NULL
+- LOR [0000000000010110] [0016] : load the value held at the address specified in arguments 2 from ram and save it at the address specified in argument 3, argument 1 should be NULL  
 - PSH [0000000000001100] [000c] : push the value stored at the address in either argument 1 to the stack, argument 2 should be NULL and argument 3 should be NULL   
 - POP [0000000000001101] [000d] : pop the top value from the stack and save it to the address specified in argument 3, arguments 1 and 2 should be NULL    
 - RST [0000000000001110] [000e] : set the value of counter to zero, all other arguments are NULL for this instruction            
@@ -54,7 +55,6 @@ Input 4:  16 bit argument 3
 - LES [0000000000010011] [0013] : compare the values stored the at the addresses specified by arguments 1 and 2, if the value of argument 1 is less than that of argument 2, sets the counter value to the one typed out in argument 3            
 - CAL [0000000000010100] [0014] : push the current counter value + 4 to the stack (to prevent infinite loops) and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction     
 - RET [0000000000010101] [0015] : pop the top value off the stack and set the counter equal to that value, all other arguments are NULL for this instruction
-- LOR [0000000000010110] [0016] : load the value held at the address specified in arguments 2 from ram and save it at the address specified in argument 3, argument 1 should be NULL  
 - HLT [1111111111111111] [ffff] : stop the system clock, all other arguments are NULL for this instruction   
 
 ### Register Addresses:   
