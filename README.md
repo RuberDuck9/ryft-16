@@ -42,7 +42,7 @@ Input 4:  16 bit argument 3
 - NEQ [0000000000010001] [0011] : compare the values stored the at the addresses specified by arguments 1 and 2, if they are not equal, sets the counter value to the one typed out in argument 3    
 - GRT [0000000000010010] [0012] : compare the values stored the at the addresses specified by arguments 1 and 2, if the value of argument 1 is greater than that of argument 2, sets the counter value to the one typed out in argument 3    
 - LES [0000000000010011] [0013] : compare the values stored the at the addresses specified by arguments 1 and 2, if the value of argument 1 is less than that of argument 2, sets the counter value to the one typed out in argument 3    
-- CAL [0000000000010100] [0014] : push the current counter value + 1 to the stack (to prevent infinite loops) and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction     
+- CAL [0000000000010100] [0014] : push the current counter value + 4 to the stack (to prevent infinite loops) and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction     
 - RET [0000000000010101] [0015] : pop the top value off the stack and set the counter equal to that value, all other arguments are NULL for this instruction
 - LOR [0000000000010110] [0016] : load the value held at the address specified in arguments 2 from ram and save it at the address specified in argument 3, argument 1 should be NULL  
 - HLT [1111111111111111] [ffff] : stop the system clock, all other arguments are NULL for this instruction   
