@@ -2,7 +2,7 @@
 
 
 ## About  
-The [name in progress] is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in **logisim evolution**, but could theoretically be built in real life if anyone had the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person, but please note that information here may have typos and other mistakes (in which case please report them) so don't rule out any one point of error if you are having problems (at least for the time being). Enjoy!  
+The ryft-16 is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in **logisim evolution**, but could theoretically be built in real life if anyone had the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person, but please note that information here may have typos and other mistakes (in which case please report them) so don't rule out any one point of error if you are having problems (at least for the time being). Enjoy!  
 
 ## Usage Instructions  
 *PLEASE* read the text below to understand how this computer works, if even a single instruction is formatted wrong the program will break. To program the computer, first write out what you would like to do in the assembly code listed below. Then, convert (you will need to do this yourself, sorry) the assembly into binary, which is stored in rom as a hex value. So, write code, turn that into hex, record it into rom, hopefully it doesn't break. Listed below are a few examples of what lines of this custom assembly would look like, and the binary conversion charts for each instruction listed next to the name.   
@@ -13,7 +13,7 @@ There are a few things that no matter the circumstance should pretty much never 
 ### Architecture Style:   
 
 ![architure](https://github.com/user-attachments/assets/da8653cb-1d8c-460a-8a7b-f7826a341588)       
-The architecture this cpu is closely modeled after.   
+The architecture this cpu is closely roughly after.   
 
 4x16 bit input   
 Input 1: 16 bit opticode - What to do with the following 3 arguments   
@@ -113,4 +113,5 @@ Subject to change in the future
 First, make sure you didn't make any typos. If you did not, then follow the code until you see an instruction make a mistake. Try to see what caused that mistake by checking to see if each argument is doing what it should be for that instruction (easier said than done). It should be apparent by now whether you are dealing with a hardware bug, or a software bug. If it is a hardware bug or a software bug caused by me telling you to do something incorrect in the manual, report it to me please. If it is just a pure software bug caused by bad code, don't bother reporting it.    
 
 ## TODO 
-Write an assembler to turn the assembly into hex.    
+Write an assembler to turn the assembly into hex.   
+Come up with a better name
