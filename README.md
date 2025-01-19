@@ -1,4 +1,4 @@
-![architure](https://github.com/user-attachments/assets/da8653cb-1d8c-460a-8a7b-f7826a341588)
+![architure](https://github.com/user-attachments/assets/da8653cb-1d8c-460a-8a7b-f7826a341588)       
 The architecture this cpu is closely modeled after.
 
 ## About  
