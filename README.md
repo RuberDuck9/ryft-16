@@ -10,10 +10,10 @@ The ryft-16 is a 16 bit cpu/computer that can do basic functions and math. The s
 ## Common Traps
 There are a few things that no matter the circumstance should pretty much never be done. The first is setting the counting to a non-multiple of 4. Doing so will cause the cpu to crash and burn miserably as arguments and opicodes will not be in sync. Rather than seeing "opticode arg1 arg2 arg3" the cpu may see "arg3 opticode arg1 arg2" which would be catastrophic. Another trap is pushing a value to stack and not popping it off before returning from a function. This will cause the ret instruction to attempt to jump to the value you pushed to the stack and forgot about. For this reason, when inside functions, it is best to try to use registers because if you forget to pop all your values off the stack, things will fall apart quickly. I'm sure there are more things I'm forgetting about at the moment, so be careful when doing things not generally intended by this architecture. 
    
-### Architecture Style:   
+## Architecture Style     
 
 ![architure](https://github.com/user-attachments/assets/da8653cb-1d8c-460a-8a7b-f7826a341588)       
-The architecture this cpu is closely roughly after.   
+The architecture this cpu is roughly modeled after.   
 
 4x16 bit input   
 Input 1: 16 bit opticode - What to do with the following 3 arguments   
@@ -57,7 +57,31 @@ Input 4:  16 bit argument 3
 - LOR [0000000000010110] [0016] : load the value held at the address specified in arguments 2 from ram and save it at the address specified in argument 3, argument 1 should be NULL  
 - HLT [1111111111111111] [ffff] : stop the system clock, all other arguments are NULL for this instruction   
 
-### Example Assembly Commands:  
+### Register Addresses:   
+
+- reg0 [0000000000000000] [0000]      
+- reg1 [0000000000000001] [0001]        
+- reg2 [0000000000000010] [0002]    
+- reg3 [0000000000000011] [0003]       
+- reg4 [0000000000000100] [0004]    
+- reg5 [0000000000000101] [0005]    
+- reg6 [0000000000000110] [0006]      
+- reg7 [0000000000000111] [0007]      
+- reg8 [0000000000001000] [0008]         
+- reg9 [0000000000001001] [0009]    
+- reg10 [0000000000001010] [000a]   
+- reg11 [0000000000001011] [000b]   
+- reg12 [0000000000001100] [000c]    
+- reg13 [0000000000001101] [000d]    
+- reg14 [0000000000001110] [000e]    
+- reg15 [0000000000001111] [000f]   
+- reg16 [0000000000010000] [0010]    
+- reg17 [0000000000010001] [0011]    
+- reg18 [0000000000010010] [0012]    
+- reg19 [0000000000010011] [0013]   
+- null [1111111111111111] [ffff]   
+
+## Example Assembly Commands:  
 Subject to change in the future    
 
 - imm 5 null a : save 5 to register 10   
@@ -84,30 +108,6 @@ Subject to change in the future
 - ret null null null : pop the top value off the stack and set the counter equal to it  
 - lor null a b : load the value stored at address 10 in ram and save it in register 11   
 - hlt null null null : halt the computer permanently   
-
-### Register Addresses:   
-
-- reg0 [0000000000000000] [0000]      
-- reg1 [0000000000000001] [0001]        
-- reg2 [0000000000000010] [0002]    
-- reg3 [0000000000000011] [0003]       
-- reg4 [0000000000000100] [0004]    
-- reg5 [0000000000000101] [0005]    
-- reg6 [0000000000000110] [0006]      
-- reg7 [0000000000000111] [0007]      
-- reg8 [0000000000001000] [0008]         
-- reg9 [0000000000001001] [0009]    
-- reg10 [0000000000001010] [000a]   
-- reg11 [0000000000001011] [000b]   
-- reg12 [0000000000001100] [000c]    
-- reg13 [0000000000001101] [000d]    
-- reg14 [0000000000001110] [000e]    
-- reg15 [0000000000001111] [000f]   
-- reg16 [0000000000010000] [0010]    
-- reg17 [0000000000010001] [0011]    
-- reg18 [0000000000010010] [0012]    
-- reg19 [0000000000010011] [0013]   
-- null [1111111111111111] [ffff]   
 
 ## Debug Instructions:
 First, make sure you didn't make any typos. If you did not, then follow the code until you see an instruction make a mistake. Try to see what caused that mistake by checking to see if each argument is doing what it should be for that instruction (easier said than done). It should be apparent by now whether you are dealing with a hardware bug, or a software bug. If it is a hardware bug or a software bug caused by me telling you to do something incorrect in the manual, report it to me please. If it is just a pure software bug caused by bad code, don't bother reporting it.    
