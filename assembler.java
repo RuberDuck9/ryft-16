@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class assembler {
 
@@ -33,86 +35,40 @@ public class assembler {
             e.printStackTrace();
         }
 
-        System.out.println(input);
-
-        ArrayList<String> output = new ArrayList<String>(); //Create a new array list to hold the resultant hex values
+        ArrayList<String> output = new ArrayList<String>(); //Create a new array list to hold all the outputs
 
         for (int i = 0; input.size() > i; i++ ) { //Match each instruction to its hex value
 
-            if (input.get(i).equals("imm")) {
-                output.add("0000");
-            }
-            else if (input.get(i).equals("cpy")) {
-                output.add("0001");
-            }
-            else if (input.get(i).equals("add")) {
-                output.add("0002");
-            }
-            else if (input.get(i).equals("ad1")) {
-                output.add("0003");
-            }
-            else if (input.get(i).equals("ad2")) {
-                output.add("0004");
-            }
-            else if (input.get(i).equals("sub")) {
-                output.add("0005");
-            }
-            else if (input.get(i).equals("mlt")) {
-                output.add("0006");
-            }
-            else if (input.get(i).equals("div")) {
-                output.add("0007");
-            }
-            else if (input.get(i).equals("and")) {
-                output.add("0008");
-            }
-            else if (input.get(i).equals("orr")) {
-                output.add("0009");
-            }
-            else if (input.get(i).equals("nor")) {
-                output.add("000a");
-            }
-            else if (input.get(i).equals("str")) {
-                output.add("000b");
-            }
-            else if (input.get(i).equals("psh")) {
-                output.add("000c");
-            }
-            else if (input.get(i).equals("pop")) {
-                output.add("000d");
-            }
-            else if (input.get(i).equals("rst")) {
-                output.add("000e");
-            }
-            else if (input.get(i).equals("gto")) {
-                output.add("000f");
-            }
-            else if (input.get(i).equals("eql")) {
-                output.add("0010");
-            }
-            else if (input.get(i).equals("neq")) {
-                output.add("0011");
-            }
-            else if (input.get(i).equals("grt")) {
-                output.add("0012");
-            }
-            else if (input.get(i).equals("les")) {
-                output.add("0013");
-            }
-            else if (input.get(i).equals("cal")) {
-                output.add("0014");
-            }
-            else if (input.get(i).equals("ret")) {
-                output.add("0015");
-            }
-            else if (input.get(i).equals("lor")) {
-                output.add("0016");
-            }
-            else if (input.get(i).equals("hlt")) {
-                output.add("ffff");
-            }
-            else if (input.get(i).equals("null")) {
-                output.add("ffff");
+            Map<String, String> opcodeMap = new HashMap<>();
+            opcodeMap.put("imm", "0000");
+            opcodeMap.put("cpy", "0001");
+            opcodeMap.put("add", "0002");
+            opcodeMap.put("ad1", "0003");
+            opcodeMap.put("ad2", "0004");
+            opcodeMap.put("sub", "0005");
+            opcodeMap.put("mlt", "0006");
+            opcodeMap.put("div", "0007");
+            opcodeMap.put("and", "0008");
+            opcodeMap.put("orr", "0009");
+            opcodeMap.put("nor", "000a");
+            opcodeMap.put("str", "000b");
+            opcodeMap.put("lor", "0016");
+            opcodeMap.put("psh", "000c");
+            opcodeMap.put("pop", "000d");
+            opcodeMap.put("rst", "000e");
+            opcodeMap.put("gto", "000f");
+            opcodeMap.put("eql", "0010");
+            opcodeMap.put("neq", "0011");
+            opcodeMap.put("grt", "0012");
+            opcodeMap.put("les", "0013");
+            opcodeMap.put("cal", "0014");
+            opcodeMap.put("ret", "0015");
+            opcodeMap.put("hlt", "ffff");
+            opcodeMap.put("null", "ffff");
+            
+            String opcode = opcodeMap.get(input.get(i));
+            if (opcode != null) {
+                output.add(opcode);
             }
             else { //If its just a number convert it into hex
                 int iOut = Integer.parseInt(input.get(i));
