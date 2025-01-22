@@ -84,6 +84,7 @@ Input 4:  16 bit argument 3
 ## Example Assembly Commands
 Subject to change in the future    
 
+- nop null null null : do nothing (technically you could put anything you want in arguments 1-3 but it wouldn't matter)
 - imm 5 null a : save 5 to register 10   
 - cpy a null b : copy the value in register 10 to register 11   
 - add a b c : add registers 10 and 11, save the result in register 12   
