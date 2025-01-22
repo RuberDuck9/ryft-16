@@ -4,7 +4,7 @@
 The ryft-16 is a 16 bit cpu/computer that can do basic functions and math. The schematic for it is written in **logisim evolution**, but it could theoretically be built in real life if anyone had the time and money to do so. All information posted below is designed to make it simpler to use for the "average" person, but please note that information here may have typos and other mistakes (in which case please report them). So, don't rule out any one point of error if you are having problems (at least for the time being). Enjoy!  
 
 ## Usage Instructions  
-*PLEASE* read the text below to understand how this computer works, if even a single instruction is formatted wrong the program will break. To program the computer, first write out what you would like to do in the assembly code detailed below. Then, convert the assembly into hex. This can be easily done by writing your assembly into a text file and running the assembly program included in this repo. Additionally, make sure you use decimal instead of hex when writing a direct value in assembly because it will be converted into hex by the assembler (e.g. the target address of gto). Listed below are a few examples of what lines of this custom assembly would look like, and the binary conversion charts for each instruction listed next to the name (although you don't really need to know those).   
+*Please* read the text below to understand how this computer works, if even a single instruction is formatted wrong the program will break. To program the computer, first write out what you would like to do in the assembly code detailed below. Then, convert the assembly into hex. This can be easily done by writing your assembly into a text file and running the assembly program included in this repo. Additionally, make sure you use decimal instead of hex when writing a direct value in assembly because it will be converted into hex by the assembler (e.g. the target address of gto). Listed below are a few examples of what lines of this custom assembly would look like, and the binary conversion charts for each instruction listed next to the name (although you don't really need to know those).   
 
 ## Common Traps
 There are a few things that no matter the circumstance should pretty much never be done. The first is setting the instruction pointer address to a non-multiple of 4. Doing so will cause the cpu to crash and burn miserably as arguments and opcodes will not be in sync. Rather than seeing "opcode arg1 arg2 arg3" the cpu may see "arg3 opcode arg1 arg2" which would be catastrophic. Another trap is pushing a value to the stack and not popping it off before returning from a function. This will cause the ret instruction to attempt to jump to the value you pushed to the stack. For this reason, when inside functions, it is best to try to use registers or ram to store values because if you forget to pop all your values off the stack, things will fall apart quickly (atleast while for the time being, while the cpu uses a shared stack for functions and general purpose use). I'm sure there are more things I'm forgetting about at the moment, so be careful when doing things not generally intended by this architecture. 
@@ -32,8 +32,8 @@ Input 4:  16 bit argument 3
 ### Instructions:    
    
 - NOP [0000000000000000] [0000] : no instruction
-- IMM [0000000000000000] [0001] : immediately store the value typed out in argument 1 to the address specified in argument 3, argument 2 should have NULL as its value      
-- CPY [0000000000000001] [0002] : copy from the address specified in argument 1, argument 2 should be NULL, to that specified in argument in 3   
+- IMM [0000000000000000] [0001] : immediately store the value typed out in argument 1 to the address specified in argument 3, argument 2 should have null as its value      
+- CPY [0000000000000001] [0002] : copy from the address specified in argument 1, argument 2 should be null, to that specified in argument in 3   
 - ADD [0000000000000010] [0003] : add the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3       
 - AD1 [0000000000000011] [0004] : add the value typed out in argument 1 and the value held at the address specified in argument 2, and save it to the address specified in argument 3   
 - AD2 [0000000000000100] [0005] : add the value typed out in argument 2 and the value held at the address specified in argument 1, and save it to the address specified in argument 3    
@@ -43,19 +43,19 @@ Input 4:  16 bit argument 3
 - AND [0000000000001000] [0009] : and each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - ORR [0000000000001001] [000a] : or each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - NOR [0000000000001010] [000b] : nor each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
-- STR [0000000000001011] [000c] : store the value held at the address specified in argument 1 to the address specified in argument 2 in ram, argument 3 should be NULL
-- LOR [0000000000010110] [0017] : load the value held at the address specified in argument 2 from ram and save it at the address specified in argument 3, argument 1 should be NULL  
-- PSH [0000000000001100] [000d] : push the value stored at the address in either argument 1 to the stack, arguments 2 and 3 should be NULL   
-- POP [0000000000001101] [000e] : pop the top value from the stack and save it to the address specified in argument 3, arguments 1 and 2 should be NULL    
-- RST [0000000000001110] [000f] : set the value of the instruction pointer to zero, all other arguments are NULL for this instruction            
-- GTO [0000000000001111] [0010] : set the value of the instruction pointer to the value typed in argument 3, arguments 1 and 2 should be NULL    
+- STR [0000000000001011] [000c] : store the value held at the address specified in argument 1 to the address specified in argument 2 in ram, argument 3 should be null
+- LOR [0000000000010110] [0017] : load the value held at the address specified in argument 2 from ram and save it at the address specified in argument 3, argument 1 should be null  
+- PSH [0000000000001100] [000d] : push the value stored at the address in either argument 1 to the stack, arguments 2 and 3 should be null   
+- POP [0000000000001101] [000e] : pop the top value from the stack and save it to the address specified in argument 3, arguments 1 and 2 should be null    
+- RST [0000000000001110] [000f] : set the value of the instruction pointer to zero, all other arguments are null for this instruction            
+- GTO [0000000000001111] [0010] : set the value of the instruction pointer to the value typed in argument 3, arguments 1 and 2 should be null    
 - EQL [0000000000010000] [0011] : compare the values stored at the addresses specified by arguments 1 and 2, if they are equal, set the instruction pointer value to the one typed out in argument 3        
 - NEQ [0000000000010001] [0012] : compare the values stored at the addresses specified by arguments 1 and 2, if they are not equal, set the instruction pointer value to the one typed out in argument 3                
 - GRT [0000000000010010] [0013] : compare the values stored at the addresses specified by arguments 1 and 2, if the value of argument 1 is greater than that of argument 2, set the instruction pointer value to the one typed out in argument 3           
 - LES [0000000000010011] [0014] : compare the values stored at the addresses specified by arguments 1 and 2, if the value of argument 1 is less than that of argument 2, set the instruction pointer value to the one typed out in argument 3            
-- CAL [0000000000010100] [0015] : push the current instruction pointer value + 4 to the stack (to prevent infinite loops) and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction     
-- RET [0000000000010101] [0016] : pop the top value off the stack and set the instruction pointer equal to that value, all other arguments are NULL for this instruction
-- HLT [1111111111111111] [ffff] : stop the system clock, all other arguments are NULL for this instruction   
+- CAL [0000000000010100] [0015] : push the current instruction pointer value + 4 to the stack (to prevent infinite loops) and then jump to the address typed out in argument 3, arguments 1 and 2 should be null for this instruction     
+- RET [0000000000010101] [0016] : pop the top value off the stack and set the instruction pointer equal to that value, all other arguments are null for this instruction
+- HLT [1111111111111111] [ffff] : stop the system clock, all other arguments are null for this instruction   
 
 ### Register Addresses:   
 
