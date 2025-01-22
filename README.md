@@ -32,29 +32,30 @@ Input 4:  16 bit argument 3
 
 ### Instructions:    
    
-- IMM [0000000000000000] [0000] : immediately store the value typed out in argument 1 to the address specified in argument 3, argument 2 should have NULL as its value      
-- CPY [0000000000000001] [0001] : copy from the address specified in argument 1, argument 2 should be NULL, to that specified in argument in 3   
-- ADD [0000000000000010] [0002] : add the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3       
-- AD1 [0000000000000011] [0003] : add the value typed out in argument 1 and the value held at the address specified in argument 2, and save it to the address specified in argument 3   
-- AD2 [0000000000000100] [0004] : add the value typed out in argument 2 and the value held at the address specified in argument 1, and save it to the address specified in argument 3    
-- SUB [0000000000000101] [0005] : subtract the value held at the address specified in argument 1 from that at argument 2 and save it to the address specified in argument 3    
-- MLT [0000000000000110] [0006] : multiply the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
-- DIV [0000000000000111] [0007] : divide the value held at the address specified in argument 1 by that at argument 2 and save it to the address specified in argument 3  
-- AND [0000000000001000] [0008] : and each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
-- ORR [0000000000001001] [0009] : or each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
-- NOR [0000000000001010] [000a] : nor each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
-- STR [0000000000001011] [000b] : store the value held at the address specified in argument 1 to the address specified in argument 2 in ram, argument 3 should be NULL
-- LOR [0000000000010110] [0016] : load the value held at the address specified in argument 2 from ram and save it at the address specified in argument 3, argument 1 should be NULL  
-- PSH [0000000000001100] [000c] : push the value stored at the address in either argument 1 to the stack, arguments 2 and 3 should be NULL   
-- POP [0000000000001101] [000d] : pop the top value from the stack and save it to the address specified in argument 3, arguments 1 and 2 should be NULL    
-- RST [0000000000001110] [000e] : set the value of the counter to zero, all other arguments are NULL for this instruction            
-- GTO [0000000000001111] [000f] : set the value of the counter to the value typed in argument 3, arguments 1 and 2 should be NULL    
-- EQL [0000000000010000] [0010] : compare the values stored at the addresses specified by arguments 1 and 2, if they are equal, set the counter value to the one typed out in argument 3        
-- NEQ [0000000000010001] [0011] : compare the values stored at the addresses specified by arguments 1 and 2, if they are not equal, set the counter value to the one typed out in argument 3                
-- GRT [0000000000010010] [0012] : compare the values stored at the addresses specified by arguments 1 and 2, if the value of argument 1 is greater than that of argument 2, set the counter value to the one typed out in argument 3           
-- LES [0000000000010011] [0013] : compare the values stored at the addresses specified by arguments 1 and 2, if the value of argument 1 is less than that of argument 2, set the counter value to the one typed out in argument 3            
-- CAL [0000000000010100] [0014] : push the current counter value + 4 to the stack (to prevent infinite loops) and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction     
-- RET [0000000000010101] [0015] : pop the top value off the stack and set the counter equal to that value, all other arguments are NULL for this instruction
+- NOP [0000000000000000] [0000] : no instruction
+- IMM [0000000000000000] [0001] : immediately store the value typed out in argument 1 to the address specified in argument 3, argument 2 should have NULL as its value      
+- CPY [0000000000000001] [0002] : copy from the address specified in argument 1, argument 2 should be NULL, to that specified in argument in 3   
+- ADD [0000000000000010] [0003] : add the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3       
+- AD1 [0000000000000011] [0004] : add the value typed out in argument 1 and the value held at the address specified in argument 2, and save it to the address specified in argument 3   
+- AD2 [0000000000000100] [0005] : add the value typed out in argument 2 and the value held at the address specified in argument 1, and save it to the address specified in argument 3    
+- SUB [0000000000000101] [0006] : subtract the value held at the address specified in argument 1 from that at argument 2 and save it to the address specified in argument 3    
+- MLT [0000000000000110] [0007] : multiply the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
+- DIV [0000000000000111] [0008] : divide the value held at the address specified in argument 1 by that at argument 2 and save it to the address specified in argument 3  
+- AND [0000000000001000] [0009] : and each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
+- ORR [0000000000001001] [000a] : or each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
+- NOR [0000000000001010] [000b] : nor each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
+- STR [0000000000001011] [000c] : store the value held at the address specified in argument 1 to the address specified in argument 2 in ram, argument 3 should be NULL
+- LOR [0000000000010110] [0017] : load the value held at the address specified in argument 2 from ram and save it at the address specified in argument 3, argument 1 should be NULL  
+- PSH [0000000000001100] [000d] : push the value stored at the address in either argument 1 to the stack, arguments 2 and 3 should be NULL   
+- POP [0000000000001101] [000e] : pop the top value from the stack and save it to the address specified in argument 3, arguments 1 and 2 should be NULL    
+- RST [0000000000001110] [000f] : set the value of the counter to zero, all other arguments are NULL for this instruction            
+- GTO [0000000000001111] [0010] : set the value of the counter to the value typed in argument 3, arguments 1 and 2 should be NULL    
+- EQL [0000000000010000] [0011] : compare the values stored at the addresses specified by arguments 1 and 2, if they are equal, set the counter value to the one typed out in argument 3        
+- NEQ [0000000000010001] [0012] : compare the values stored at the addresses specified by arguments 1 and 2, if they are not equal, set the counter value to the one typed out in argument 3                
+- GRT [0000000000010010] [0013] : compare the values stored at the addresses specified by arguments 1 and 2, if the value of argument 1 is greater than that of argument 2, set the counter value to the one typed out in argument 3           
+- LES [0000000000010011] [0014] : compare the values stored at the addresses specified by arguments 1 and 2, if the value of argument 1 is less than that of argument 2, set the counter value to the one typed out in argument 3            
+- CAL [0000000000010100] [0015] : push the current counter value + 4 to the stack (to prevent infinite loops) and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction     
+- RET [0000000000010101] [0016] : pop the top value off the stack and set the counter equal to that value, all other arguments are NULL for this instruction
 - HLT [1111111111111111] [ffff] : stop the system clock, all other arguments are NULL for this instruction   
 
 ### Register Addresses:   
@@ -78,7 +79,7 @@ Input 4:  16 bit argument 3
 - reg16 [0000000000010000] [0010]    
 - reg17 [0000000000010001] [0011]    
 - reg18 [0000000000010010] [0012]    
-- reg19 [0000000000010011] [0013]   
+- reg_out[0000000000010011] [0013]   
 - null [1111111111111111] [ffff]
 
 ## Example Assembly Commands
