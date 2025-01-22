@@ -8,12 +8,12 @@ The ryft-16 is a 16 bit cpu/computer that can do basic functions and math. The s
 *PLEASE* read the text below to understand how this computer works, if even a single instruction is formatted wrong the program will break. To program the computer, first write out what you would like to do in the assembly code detailed below. Then, convert the assembly into hex. This can be easily done by writing your assembly into a text file and running the assembly program included in this repo. Additionally, make sure you use decimal instead of hex when writing a direct value in assembly because it will be converted into hex by the assembler (e.g. the target address of gto). Listed below are a few examples of what lines of this custom assembly would look like, and the binary conversion charts for each instruction listed next to the name (although you don't really need to know those).   
 
 ## Common Traps
-There are a few things that no matter the circumstance should pretty much never be done. The first is setting the counter to a non-multiple of 4. Doing so will cause the cpu to crash and burn miserably as arguments and opcodes will not be in sync. Rather than seeing "opcode arg1 arg2 arg3" the cpu may see "arg3 opcode arg1 arg2" which would be catastrophic. Another trap is pushing a value to the stack and not popping it off before returning from a function. This will cause the ret instruction to attempt to jump to the value you pushed to the stack and forgot about. For this reason, when inside functions, it is best to try to use registers because if you forget to pop all your values off the stack, things will fall apart quickly. I'm sure there are more things I'm forgetting about at the moment, so be careful when doing things not generally intended by this architecture. 
+There are a few things that no matter the circumstance should pretty much never be done. The first is setting the instruction pointer address to a non-multiple of 4. Doing so will cause the cpu to crash and burn miserably as arguments and opcodes will not be in sync. Rather than seeing "opcode arg1 arg2 arg3" the cpu may see "arg3 opcode arg1 arg2" which would be catastrophic. Another trap is pushing a value to the stack and not popping it off before returning from a function. This will cause the ret instruction to attempt to jump to the value you pushed to the stack. For this reason, when inside functions, it is best to try to use registers or ram to store values because if you forget to pop all your values off the stack, things will fall apart quickly (atleast while for the time being, while the cpu uses a shared stack for functions and general purpose use). I'm sure there are more things I'm forgetting about at the moment, so be careful when doing things not generally intended by this architecture. 
    
 ## Architecture Style     
 
 ![architure](https://github.com/user-attachments/assets/da8653cb-1d8c-460a-8a7b-f7826a341588)       
-The architecture this cpu is roughly modeled after.   
+The architecture style this cpu is roughly modeled after.   
 
 4x16 bit input   
 Input 1: 16 bit opcode - What to do with the following 3 arguments   
@@ -21,14 +21,14 @@ Input 2:  16 bit argument 1
 Input 3:  16 bit argument 2     
 Input 4:  16 bit argument 3     
 
-### Components:
-
-- Instruction Interpreter: reads argument one and determines which instruction to execute
-- Registers: hold temporary values that the cpu needs in the very short term
-- RAM: holds more long-term data for the cpu
-- The Stack: stores data sequentially for the cpu, cannot be accessed out of outer
-- ROM: stored instructions for the cpu to carry out once turned on, stores data as binary hex values, reads from address specified by counter
-- Counter: increases by one each tick unless modified by an instruction, controls read address of ROM
+### Components:  
+    
+- Instruction Decoder: reads argument one and determines which instruction to execute   
+- Registers: hold temporary values that the cpu needs in the very short term    
+- RAM: holds more long-term data for the cpu   
+- The Stack: stores data sequentially for the cpu, cannot be accessed out of outer   
+- Instruction Register: stored instructions for the cpu to carry out once turned on, stores data as binary hex values, reads from address specified by instruction pointer    
+- Instruction Pointer: increases by one each tick unless modified by an instruction, controls read address of ROM    
 
 ### Instructions:    
    
@@ -48,14 +48,14 @@ Input 4:  16 bit argument 3
 - LOR [0000000000010110] [0017] : load the value held at the address specified in argument 2 from ram and save it at the address specified in argument 3, argument 1 should be NULL  
 - PSH [0000000000001100] [000d] : push the value stored at the address in either argument 1 to the stack, arguments 2 and 3 should be NULL   
 - POP [0000000000001101] [000e] : pop the top value from the stack and save it to the address specified in argument 3, arguments 1 and 2 should be NULL    
-- RST [0000000000001110] [000f] : set the value of the counter to zero, all other arguments are NULL for this instruction            
-- GTO [0000000000001111] [0010] : set the value of the counter to the value typed in argument 3, arguments 1 and 2 should be NULL    
-- EQL [0000000000010000] [0011] : compare the values stored at the addresses specified by arguments 1 and 2, if they are equal, set the counter value to the one typed out in argument 3        
-- NEQ [0000000000010001] [0012] : compare the values stored at the addresses specified by arguments 1 and 2, if they are not equal, set the counter value to the one typed out in argument 3                
-- GRT [0000000000010010] [0013] : compare the values stored at the addresses specified by arguments 1 and 2, if the value of argument 1 is greater than that of argument 2, set the counter value to the one typed out in argument 3           
-- LES [0000000000010011] [0014] : compare the values stored at the addresses specified by arguments 1 and 2, if the value of argument 1 is less than that of argument 2, set the counter value to the one typed out in argument 3            
-- CAL [0000000000010100] [0015] : push the current counter value + 4 to the stack (to prevent infinite loops) and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction     
-- RET [0000000000010101] [0016] : pop the top value off the stack and set the counter equal to that value, all other arguments are NULL for this instruction
+- RST [0000000000001110] [000f] : set the value of the instruction pointer to zero, all other arguments are NULL for this instruction            
+- GTO [0000000000001111] [0010] : set the value of the instruction pointer to the value typed in argument 3, arguments 1 and 2 should be NULL    
+- EQL [0000000000010000] [0011] : compare the values stored at the addresses specified by arguments 1 and 2, if they are equal, set the instruction pointer value to the one typed out in argument 3        
+- NEQ [0000000000010001] [0012] : compare the values stored at the addresses specified by arguments 1 and 2, if they are not equal, set the instruction pointer value to the one typed out in argument 3                
+- GRT [0000000000010010] [0013] : compare the values stored at the addresses specified by arguments 1 and 2, if the value of argument 1 is greater than that of argument 2, set the instruction pointer value to the one typed out in argument 3           
+- LES [0000000000010011] [0014] : compare the values stored at the addresses specified by arguments 1 and 2, if the value of argument 1 is less than that of argument 2, set the instruction pointer value to the one typed out in argument 3            
+- CAL [0000000000010100] [0015] : push the current instruction pointer value + 4 to the stack (to prevent infinite loops) and then jump to the address typed out in argument 3, arguments 1 and 2 should be NULL for this instruction     
+- RET [0000000000010101] [0016] : pop the top value off the stack and set the instruction pointer equal to that value, all other arguments are NULL for this instruction
 - HLT [1111111111111111] [ffff] : stop the system clock, all other arguments are NULL for this instruction   
 
 ### Register Addresses:   
@@ -99,14 +99,14 @@ Subject to change in the future
 - str a b null : store the value in register 11 at the value in register 10 in ram   
 - psh a null null : push the value in register 10 to the stack   
 - pop null null a : pop the top value off the stack and save it in register 10   
-- rst null null null : set the counter to zero   
-- gto null null d : set the counter to 14    
-- eql a b 0 : if register 10 is equal to register 11 set the counter value to zero   
-- neq a b 0 : if register 10 is not equal to register 11 set the counter value to zero   
-- grt a b 0 : if register 10 is greater than register 11 set the counter value to zero   
-- les a b 0 : if register 10 is less than register 11 set the counter value to zero    
-- cal null null 10 : push the current counter value to the stack and jump to address 16   
-- ret null null null : pop the top value off the stack and set the counter equal to it  
+- rst null null null : set the instruction pointer to zero   
+- gto null null d : set the instruction pointer to 14    
+- eql a b 0 : if register 10 is equal to register 11 set the instruction pointer value to zero   
+- neq a b 0 : if register 10 is not equal to register 11 set the instruction pointer value to zero   
+- grt a b 0 : if register 10 is greater than register 11 set the instruction pointer value to zero   
+- les a b 0 : if register 10 is less than register 11 set the instruction pointer value to zero    
+- cal null null 10 : push the current instruction pointer value to the stack and jump to address 16   
+- ret null null null : pop the top value off the stack and set the instruction pointer equal to it  
 - lor null a b : load the value stored at address 10 in ram and save it in register 11   
 - hlt null null null : halt the computer permanently   
 
