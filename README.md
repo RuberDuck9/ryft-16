@@ -14,7 +14,7 @@ There are a few things that no matter the circumstance should pretty much never 
 ![architure](https://github.com/user-attachments/assets/da8653cb-1d8c-460a-8a7b-f7826a341588)       
 The architecture style this cpu is roughly modeled after.   
 
-4x16 bit input   
+4x16 bit bus   
 Input 1: 16 bit opcode - What to do with the following 3 arguments   
 Input 2:  16 bit argument 1     
 Input 3:  16 bit argument 2     
@@ -85,29 +85,29 @@ Input 4:  16 bit argument 3
 Subject to change in the future    
 
 - nop null null null : do nothing (technically you could put anything you want in arguments 1-3 but it wouldn't matter)
-- imm 5 null a : save 5 to register 10   
-- cpy a null b : copy the value in register 10 to register 11   
-- add a b c : add registers 10 and 11, save the result in register 12   
-- ad1 5 a b : add 5 and register 10, save the result in register 11   
-- ad2 a 5 b : add register 10 and 5, save the result in register 11   
-- sub a b c : subtract registers 10 and 11, save the result in register 12   
-- mlt a b c : multiply registers 10 and 11, save the result in register 12   
-- div a b c : divide register 10 by 11, save the result in register 12   
-- and a b c : bitwise and register 10 and 11, save the result in register 12   
-- orr a b c : bitwise or register 10 and 11, save the result in register 12    
-- nor a b c : bitwise nor register 10 and 11, save the result in register 12   
-- str a b null : store the value in register 11 at the value in register 10 in ram   
-- psh a null null : push the value in register 10 to the stack   
-- pop null null a : pop the top value off the stack and save it in register 10   
+- imm 5 null 10 : save 5 to register 10   
+- cpy 10 null 11 : copy the value in register 10 to register 11   
+- add 10 11 12 : add registers 10 and 11, save the result in register 12   
+- ad1 5 10 11 : add 5 and register 10, save the result in register 11   
+- ad2 10 5 11 : add register 10 and 5, save the result in register 11   
+- sub 10 11 12 : subtract registers 10 and 11, save the result in register 12   
+- mlt 10 11 12 : multiply registers 10 and 11, save the result in register 12   
+- div 10 11 12 : divide register 10 by 11, save the result in register 12   
+- and 10 11 12 : bitwise and register 10 and 11, save the result in register 12   
+- orr 10 11 12 : bitwise or register 10 and 11, save the result in register 12    
+- nor 10 11 12 : bitwise nor register 10 and 11, save the result in register 12   
+- str 10 11 null : store the value in register 11 at the value in register 10 in ram   
+- psh 10 null null : push the value in register 10 to the stack   
+- pop null null 10 : pop the top value off the stack and save it in register 10   
 - rst null null null : set the instruction pointer to zero   
-- gto null null d : set the instruction pointer to 14    
-- eql a b 0 : if register 10 is equal to register 11 set the instruction pointer value to zero   
-- neq a b 0 : if register 10 is not equal to register 11 set the instruction pointer value to zero   
-- grt a b 0 : if register 10 is greater than register 11 set the instruction pointer value to zero   
-- les a b 0 : if register 10 is less than register 11 set the instruction pointer value to zero    
+- gto null null 13 : set the instruction pointer to 13    
+- eql 10 11 0 : if register 10 is equal to register 11 set the instruction pointer value to zero   
+- neq 10 11 0 : if register 10 is not equal to register 11 set the instruction pointer value to zero   
+- grt 10 11 0 : if register 10 is greater than register 11 set the instruction pointer value to zero   
+- les 10 11 0 : if register 10 is less than register 11 set the instruction pointer value to zero    
 - cal null null 10 : push the current instruction pointer value to the stack and jump to address 16   
 - ret null null null : pop the top value off the stack and set the instruction pointer equal to it  
-- lor null a b : load the value stored at address 10 in ram and save it in register 11   
+- lor null 10 11 : load the value stored at address 10 in ram and save it in register 11   
 - hlt null null null : halt the computer permanently   
 
 ## Debug Instructions
