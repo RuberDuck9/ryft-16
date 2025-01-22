@@ -115,4 +115,3 @@ First, make sure you didn't make any typos. If you did not, then follow the code
 
 ## TODO 
 ~~Write an assembler to turn the assembly into hex.~~  
-Come up with a better name
