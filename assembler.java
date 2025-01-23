@@ -27,9 +27,7 @@ public class assembler {
                     input.add(part); // Add each instruction to the input list
                 }
             }
-
             fileReader.close();
-
         } catch (FileNotFoundException e) {
             System.out.println("Error: File not found");
             e.printStackTrace();
@@ -73,14 +71,18 @@ public class assembler {
             }
             else { //If its just a number convert it into hex
                 int iOut = Integer.parseInt(input.get(i));
-                output.add(Integer.toHexString(iOut));
+                output.add(String.format("%04X", iOut));
             }
 
         }
 
-        for (int i = 0; input.size() > i; i++ ) { //Print out each hex value
-            System.out.println(output.get(i));
+        System.out.println("******************************************************************");
+
+        for (int i = 0; input.size() > i; i+=4 ) { //Print out each hex value
+            System.out.println(output.get(i) + " " + output.get(i+1) + " " + output.get(i+2) + " " + output.get(i+3));
         }
+
+        System.out.println("******************************************************************");
 
         console.close();
 
