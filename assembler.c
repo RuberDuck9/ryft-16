@@ -110,6 +110,9 @@ int main () {
                 else if (strcmp(token, "ret") == 0) {
                         strcat(output, "0016 "); 
                 }
+                else if (strcmp(token, "ckj") == 0) {
+                        strcat(output, "0018 ");
+                }
                 else if (strcmp(token, "hlt") == 0) {
                         strcat(output, "ffff ");
                 }
@@ -118,6 +121,10 @@ int main () {
                 }
                 else { // if the assembly token doesn't match with a term above, it must a number, so convert it into hex
                         int value = atoi(token); // convert the current token into an integer
+                        if (value == 0 && strcmp(token, "0") != 0) { // check if the token is invalid, such as abc
+                                token = strtok(NULL, " \n"); // skip this token if that is the case
+                                continue; //restart the while loop to insure the token is converted into an int again 
+                        }
                         char formated_hex_value[6]; // create a string to store the value that is about to be converted into hex
                         sprintf(formated_hex_value, "%04x ", value); // "%04X" formats the integer as a 4 digit string in lower case
                         strcat(output, formated_hex_value); // strcat concatonates output and the the new value we just formated
@@ -129,6 +136,7 @@ int main () {
                 }
 
                 token = strtok(NULL, " \n"); //move to the next line to decode
+                
         }
 
 
