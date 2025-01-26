@@ -36,7 +36,8 @@ Input 4:  16 bit argument 3
 - CPY [0000000000000001] [0002] : copy from the address specified in argument 1, argument 2 should be null, to that specified in argument in 3   
 - ADD [0000000000000010] [0003] : add the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3       
 - AD1 [0000000000000011] [0004] : add the value typed out in argument 1 and the value held at the address specified in argument 2, and save it to the address specified in argument 3   
-- AD2 [0000000000000100] [0005] : add the value typed out in argument 2 and the value held at the address specified in argument 1, and save it to the address specified in argument 3    
+- AD2 [0000000000000100] [0005] : add the value typed out in argument 2 and the value held at the address specified in argument 1, and save it to the address specified in argument 3
+- ADJ [0000000000000100] [0028] : check if adding the values held at the addresses specified in arguments 1 and 2 would have a carry, if so, set the instruction pointer to the value typed in argument 3
 - SUB [0000000000000101] [0006] : subtract the value held at the address specified in argument 1 from that at argument 2 and save it to the address specified in argument 3    
 - MLT [0000000000000110] [0007] : multiply the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - DIV [0000000000000111] [0008] : divide the value held at the address specified in argument 1 by that at argument 2 and save it to the address specified in argument 3  
