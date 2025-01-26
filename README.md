@@ -37,14 +37,14 @@ Input 4:  16 bit argument 3
 - ADD [0000000000000010] [0003] : add the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3       
 - AD1 [0000000000000011] [0004] : add the value typed out in argument 1 and the value held at the address specified in argument 2, and save it to the address specified in argument 3   
 - AD2 [0000000000000100] [0005] : add the value typed out in argument 2 and the value held at the address specified in argument 1, and save it to the address specified in argument 3
-- ADJ [0000000000000100] [0028] : check if adding the values held at the addresses specified in arguments 1 and 2 would have a carry, if so, set the instruction pointer to the value typed in argument 3
+- CKJ [0000000000000100] [0018] : check if adding the values held at the addresses specified in arguments 1 and 2 would have a carry, if so, set the instruction pointer to the value typed in argument 3
 - SUB [0000000000000101] [0006] : subtract the value held at the address specified in argument 1 from that at argument 2 and save it to the address specified in argument 3    
 - MLT [0000000000000110] [0007] : multiply the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - DIV [0000000000000111] [0008] : divide the value held at the address specified in argument 1 by that at argument 2 and save it to the address specified in argument 3  
 - AND [0000000000001000] [0009] : and each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - ORR [0000000000001001] [000a] : or each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
 - NOR [0000000000001010] [000b] : nor each bit of the values held at the addresses specified in arguments 1 and 2 and save it to the address specified in argument 3   
-- STR [0000000000001011] [000c] : store the value held at the address specified in argument 1 to the address specified in argument 2 in ram, argument 3 should be null
+- STR [0000000000001011] [000c] : store the value held at the address specified in argument 1 to value held at the address specified in argument 2 in ram, argument 3 should be null
 - LOR [0000000000010110] [0017] : load the value held at the address specified in argument 2 from ram and save it at the address specified in argument 3, argument 1 should be null  
 - PSH [0000000000001100] [000d] : push the value stored at the address in either argument 1 to the stack, arguments 2 and 3 should be null   
 - POP [0000000000001101] [000e] : pop the top value from the stack and save it to the address specified in argument 3, arguments 1 and 2 should be null    
@@ -90,7 +90,8 @@ Subject to change in the future
 - cpy 10 null 11 : copy the value in register 10 to register 11   
 - add 10 11 12 : add registers 10 and 11, save the result in register 12   
 - ad1 5 10 11 : add 5 and register 10, save the result in register 11   
-- ad2 10 5 11 : add register 10 and 5, save the result in register 11   
+- ad2 10 5 11 : add register 10 and 5, save the result in register 11
+- ckj 0 1 48 : check if adding register and 0 and 1 would have a carry, if so set the instruction pointer to 48
 - sub 10 11 12 : subtract registers 10 and 11, save the result in register 12   
 - mlt 10 11 12 : multiply registers 10 and 11, save the result in register 12   
 - div 10 11 12 : divide register 10 by 11, save the result in register 12   
