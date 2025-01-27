@@ -9,9 +9,9 @@ The ryft-16 is a 16 bit cpu/computer that can do basic functions and math. The s
 ## Common Traps
 There are a few things that no matter the circumstance should pretty much never be done. The first is setting the instruction pointer address to a non-multiple of 4. Doing so will cause the cpu to crash and burn miserably as arguments and opcodes will not be in sync. Rather than seeing "opcode arg1 arg2 arg3" the cpu may see "arg3 opcode arg1 arg2" which would be catastrophic. Another trap is pushing a value to the stack and not popping it off before returning from a function. This will cause the ret instruction to attempt to jump to the value you pushed to the stack. For this reason, when inside functions, it is best to try to use registers or ram to store values because if you forget to pop all your values off the stack, things will fall apart quickly (atleast while for the time being, while the cpu uses a shared stack for functions and general purpose use). I'm sure there are more things I'm forgetting about at the moment, so be careful when doing things not generally intended by this architecture. 
    
-## Architecture Style     
+## Architecture Style: CISC           
 
-![architure](https://github.com/user-attachments/assets/da8653cb-1d8c-460a-8a7b-f7826a341588)       
+![image](https://github.com/user-attachments/assets/16a26c93-19df-487b-be58-aa6f22466b4c)    
 The architecture style this cpu is roughly modeled after.   
 
 4x16 bit bus   
