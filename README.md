@@ -7,7 +7,7 @@ The ryft-16 is a 16 bit cpu/computer that can do basic functions and math. The s
 *Please* read the text below to understand how this computer works, if even a single instruction is formatted wrong the program will break. To program the computer, first write out what you would like to do in the assembly code detailed below. Then, convert the assembly into hex. This can be easily done by writing your assembly into a text file and running the assembly program included in this repo. Additionally, make sure you use decimal instead of hex when writing a direct value in assembly because it will be converted into hex by the assembler (e.g. the target address of gto). Listed below are a few examples of what lines of this custom assembly would look like, and the binary conversion charts for each instruction listed next to the name (although you don't really need to know those).   
 
 ## Common Traps
-There are a few things that no matter the circumstance should pretty much never be done. The first is setting the instruction pointer address to a non-multiple of 4. Doing so will cause the cpu to crash and burn miserably as arguments and opcodes will not be in sync. Rather than seeing "opcode arg1 arg2 arg3" the cpu may see "arg3 opcode arg1 arg2" which would be catastrophic. Another trap is pushing a value to the stack and not popping it off before returning from a function. This will cause the ret instruction to attempt to jump to the value you pushed to the stack. For this reason, when inside functions, it is best to try to use registers or ram to store values because if you forget to pop all your values off the stack, things will fall apart quickly (atleast while for the time being, while the cpu uses a shared stack for functions and general purpose use). I'm sure there are more things I'm forgetting about at the moment, so be careful when doing things not generally intended by this architecture. 
+There are a few things that no matter the circumstance should pretty much never be done. The first is setting the instruction pointer address to a non-multiple of 4. Doing so will cause the cpu to crash miserably as arguments and opcodes will not be in sync. Rather than seeing "opcode arg1 arg2 arg3" the cpu may see "arg3 opcode arg1 arg2" which would be catastrophic. Another trap is pushing a value to the stack and not popping it off before returning from a function. This will cause the ret instruction to attempt to jump to the value you pushed to the stack. For this reason, when inside functions, it is best to try to use registers or ram to store values because if you forget to pop all your values off the stack, things will fall apart quickly (atleast while for the time being, while the cpu uses a shared stack for functions and general purpose use). I'm sure there are more things I'm forgetting about at the moment, so be careful when doing things not generally intended by this architecture. 
    
 ## Architecture Style: CISC           
 
@@ -15,7 +15,7 @@ There are a few things that no matter the circumstance should pretty much never 
 The architecture style this cpu is roughly modeled after.   
 
 4x16 bit bus   
-Input 1: 16 bit opcode - What to do with the following 3 arguments   
+Input 1: 16 bit opcode/instruction - What to do with the following 3 arguments   
 Input 2:  16 bit argument 1     
 Input 3:  16 bit argument 2     
 Input 4:  16 bit argument 3     
